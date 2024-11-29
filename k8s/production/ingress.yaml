@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prod-seatyrants-website-frontend-ingress
+  namespace: prod-seatyrants-website-frontend
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - seatyrants.crzcommon.com
+      secretName: prod-seatyrants-frontend-crzcommon-tls
+  rules:
+    - host: seatyrants.crzcommon.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: prod-seatyrants-website-frontend-service
+                port:
+                  number: 80

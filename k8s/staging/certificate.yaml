@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: staging-seatyrants-frontend-crzcommon-cert
+  namespace: staging-seatyrants-website-frontend
+spec:
+  secretName: staging-seatyrants-frontend-crzcommon-tls
+  dnsNames:
+    - staging.seatyrants.crzcommon.com
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

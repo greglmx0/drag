@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prod-seatyrants-frontend-crzcommon-cert
+  namespace: prod-seatyrants-website-frontend
+spec:
+  secretName: prod-seatyrants-frontend-crzcommon-tls
+  dnsNames:
+    - seatyrants.crzcommon.com
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

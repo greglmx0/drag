@@ -1,0 +1,88 @@
+{
+  "productName": "Test App",
+  "version": "0.0.0",
+  "identifier": "com.flapi.testapp",
+  "build": {
+    "frontendDist": "../.output/public/",
+    "devUrl": "http://localhost:1460",
+    "beforeDevCommand": "sh src-tauri/scripts/beforeDevCommand.sh",
+    "beforeBuildCommand": "sh src-tauri/scripts/beforeBuildCommand.sh"
+  },
+  "app": {
+    "windows": [
+      {
+        "fullscreen": false,
+        "width": 600,
+        "height": 800,
+        "resizable": false,
+        "title": "Test App",
+        "decorations": false,
+        "center": true,
+        "alwaysOnTop": false,
+        "visible": true,
+        "url": "/",
+        "label": "main"
+      }
+    ],
+    "macOSPrivateApi": true,
+    "security": {
+      "csp": "default-src 'self'; connect-src http://127.0.0.1:3333/ https://staging.api.crzcommon.com https://api.crzcommon.com http://ipc.localhost;",
+      "assetProtocol": {
+        "enable": false,
+        "scope": []
+      },
+      "dangerousDisableAssetCspModification": false,
+      "freezePrototype": false,
+      "pattern": {
+        "use": "brownfield"
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "category": "Application",
+    "copyright": "Flapi",
+    "longDescription": "Test App",
+    "shortDescription": "Test App",
+    "license": "Proprietary",
+    "targets": "all",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+    "publisher": "Flapi",
+    "resources": [],
+    "externalBin": [],
+    "fileAssociations": [],
+    "linux": {
+      "appimage": {
+        "bundleMediaFramework": true
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "11.0",
+      "entitlements": null,
+      "exceptionDomain": "127.0.0.1 staging.api.crzcommon.com api.crzcommon.com",
+      "frameworks": [],
+      "providerShortName": null,
+      "signingIdentity": null
+    },
+    "windows": {
+      "webviewInstallMode": {
+        "silent": true,
+        "type": "offlineInstaller"
+      },
+      "allowDowngrades": false,
+      "signCommand": ""
+    }
+  },
+  "plugins": {
+    "updater": {
+      "windows": {
+        "installMode": "passive"
+      },
+      "active": true,
+      "endpoints": ["https://api.crzcommon.com/launcher/updater-manifest/{{target}}/{{arch}}/{{current_version}}"],
+      "dialog": false,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDE5NjU0QjdDQTI1Njk4MDYKUldRR21GYWlmRXRsR2Faekh4WGJSeVR4czJkTFZFSzI0enVtaGxxc2dNWm9yZG1nN0ZIU2Q3NXQK"
+    }
+  },
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json"
+}
